@@ -1,0 +1,386 @@
+/* src/components/Header/Header.css */
+
+/* ===== EXISTING HEADER STYLES ===== */
+.header {
+  background-color: #2d3748; /* Light black background */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logo {
+  flex-shrink: 0;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Navigation Menu - Desktop Styles */
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.nav-menu li {
+  margin: 0;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #e2e8f0; /* Light text color for contrast against dark background */
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-menu a:hover {
+  color: #63b3ed; /* Lighter blue for better contrast on dark */
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-menu a.active {
+  color: #63b3ed; /* Lighter blue for better contrast on dark */
+  font-weight: 600;
+}
+
+.nav-menu a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: #63b3ed; /* Lighter blue for better contrast */
+  border-radius: 50%;
+}
+
+/* Header Actions */
+.header-actions {
+  flex-shrink: 0;
+}
+
+.btn {
+  background-color: #3182ce; /* Slightly adjusted blue for better contrast */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #2c5aa0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(49, 130, 206, 0.4);
+}
+
+/* ===== NEW RESPONSIVE STYLES ===== */
+
+/* Mobile Menu Toggle Button (Hamburger) */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  gap: 4px;
+  z-index: 1001;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: #e2e8f0; /* Light color for hamburger lines */
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Hamburger Animation */
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+}
+
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+
+/* Tablet and Mobile Styles */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Show hamburger menu on mobile */
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  /* Hide header actions on mobile */
+  .header-actions {
+    display: none;
+  }
+  
+  /* Hide desktop navigation on mobile */
+  .nav-menu:not(.mobile-active) {
+    display: none;
+  }
+  
+  /* Logo sizing adjustment for mobile */
+  .logo img {
+    height: 40px;
+  }
+  
+  /* Mobile navigation menu styles - Now positioned at top left */
+  .nav-menu.mobile-active {
+    position: fixed;
+    top: 70px; /* Below the header */
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: #2d3748;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    padding: 0;
+    overflow-y: auto;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: block;
+  }
+  
+  .nav-menu.mobile-active.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .nav-menu.mobile-active ul {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-menu.mobile-active li {
+    margin: 0;
+    border-bottom: 1px solid #4a5568;
+    width: 100%;
+  }
+  
+  .nav-menu.mobile-active a {
+    display: block;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    width: 100%;
+    border-radius: 0;
+    color: #e2e8f0;
+  }
+  
+  .nav-menu.mobile-active a.active::after {
+    display: none;
+  }
+  
+  .nav-menu.mobile-active a.active {
+    background-color: #3182ce;
+    color: white;
+  }
+  
+  .nav-menu.mobile-active a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #63b3ed;
+  }
+  
+  /* Show overlay on mobile when menu is active */
+  .mobile-menu-overlay {
+    display: block;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0.8rem;
+    width: 100%;
+  }
+  
+  .logo img {
+    height: 35px;
+  }
+  
+  .nav-menu.mobile-active {
+    top: 60px; /* Adjusted for smaller header height */
+  }
+}
+
+/* Very Small Devices */
+@media (max-width: 320px) {
+  .header-container {
+    padding: 0.5rem;
+  }
+  
+  .logo img {
+    height: 30px;
+  }
+}
+
+/* Desktop Styles - Ensure desktop behavior remains unchanged */
+@media (min-width: 769px) {
+  .nav-menu.mobile-active {
+    display: none !important;
+  }
+  
+  .nav-menu:not(.mobile-active) {
+    display: flex !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  
+  .nav-menu ul {
+    flex-direction: row !important;
+  }
+  
+  .nav-menu li {
+    border-bottom: none !important;
+    width: auto !important;
+  }
+  
+  .nav-menu a {
+    padding: 0.5rem 1rem !important;
+    font-size: 1rem !important;
+    width: auto !important;
+    border-radius: 4px !important;
+  }
+  
+  .nav-menu a.active {
+    background-color: transparent !important;
+    color: #63b3ed !important;
+  }
+  
+  .nav-menu a.active::after {
+    display: block !important;
+  }
+  
+  /* Hide mobile overlay on desktop */
+  .mobile-menu-overlay {
+    display: none !important;
+  }
+  
+  /* Hide mobile menu toggle on desktop */
+  .mobile-menu-toggle {
+    display: none !important;
+  }
+  
+  /* Show header actions on desktop */
+  .header-actions {
+    display: block !important;
+  }
+}
+
+/* Large Desktop Screens */
+@media (min-width: 1200px) {
+  .header-container {
+    padding: 1rem 0;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+.nav-menu a,
+.btn,
+.mobile-menu-toggle,
+.logo img {
+  transition: all 0.3s ease;
+}
+
+/* Focus styles for accessibility */
+.mobile-menu-toggle:focus,
+.nav-menu a:focus,
+.btn:focus {
+  outline: 2px solid #63b3ed;
+  outline-offset: 2px;
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Ensure no horizontal overflow on mobile */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}

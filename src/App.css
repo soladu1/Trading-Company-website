@@ -1,0 +1,117 @@
+/* src/App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ast-global-color-0: #046bd2;
+  --ast-global-color-1: #045cb4;
+  --ast-global-color-2: #1e293b;
+  --ast-global-color-3: #334155;
+  --ast-global-color-4: #ffffff;
+  --ast-global-color-5: #f0f5fa;
+  --ast-global-color-6: #111111;
+  --ast-global-color-7: #d1d5db;
+  --ast-global-color-8: #111111;
+  --ast-border-color: var(--ast-global-color-7);
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ast-global-color-3);
+  background-color: var(--ast-global-color-4);
+}
+
+a {
+  color: var(--ast-global-color-0);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--ast-global-color-1);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--ast-global-color-0);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: var(--ast-global-color-1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--ast-global-color-0);
+  color: var(--ast-global-color-0);
+}
+
+.btn-outline:hover {
+  background-color: var(--ast-global-color-0);
+  color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease forwards;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+}
