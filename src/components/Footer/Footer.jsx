@@ -54,7 +54,7 @@ const Footer = () => {
                 Solomon Adugna
               </a>
             </strong>
-            | Copyright © 2025 <span>Serenta Trading</span>
+            | Copyright © 2026 <span>Serenta Trading</span>
           </p>
         </div>
       </div>
