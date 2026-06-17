@@ -1,21 +1,22 @@
 // src/pages/Contact.jsx
-import { useState } from 'react';
-import './Contact.css';
+import { useState } from "react";
+import Agent from "../components/Agent/Agent";
+import "./Contact.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: 'Industrial Machinery',
-    region: 'Africa',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    service: "Industrial Machinery",
+    region: "Africa",
+    message: "",
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -23,7 +24,12 @@ const Contact = () => {
     e.preventDefault();
 
     // Basic validation
-    if (!formData.name || !formData.email || !formData.phone || !formData.region) {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.region
+    ) {
       alert("Please fill in all required fields");
       return;
     }
@@ -45,25 +51,25 @@ const Contact = () => {
     // If all validation passes
     alert("Thank you for your message! We will get back to you soon.");
     setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: 'Industrial Machinery',
-      region: 'Africa',
-      message: ''
+      name: "",
+      email: "",
+      phone: "",
+      service: "Industrial Machinery",
+      region: "Africa",
+      message: "",
     });
   };
 
   return (
     <div className="contact-page">
       {/* Hero Section */}
-      <section className="hero">  
+      <section className="hero">
         <div className="container">
           <h1>Contact Us</h1>
           <h5>SERENTA TRADING - GET EVERYTHING YOU NEED</h5>
           <p>
-            Looking for reliable industrial machines, cutting-edge technology, or
-            world-class lab equipment? Connect with us today and discover how
+            Looking for reliable industrial machines, cutting-edge technology,
+            or world-class lab equipment? Connect with us today and discover how
             Serenta Trading can support your business goals.
           </p>
         </div>
@@ -75,12 +81,18 @@ const Contact = () => {
           <div className="offices-grid">
             <div className="office-card">
               <h3>UAE Office</h3>
-              <p>Dubai Abc Steet, UAE<br />+(971) 581 336 247</p>
               <p>
-                Wide Product Portfolio – One-stop source for machinery, tech, and
-                laboratory equipment.
+                Dubai Abc Steet, UAE
+                <br />
+                +(971) 581 336 247
               </p>
-              <a href="mailto:info@serentatrading.com" className="btn">Email Us</a>
+              <p>
+                Wide Product Portfolio – One-stop source for machinery, tech,
+                and laboratory equipment.
+              </p>
+              <a href="mailto:info@serentatrading.com" className="btn">
+                Email Us
+              </a>
             </div>
           </div>
         </div>
@@ -145,28 +157,42 @@ const Contact = () => {
                 <div className="form-col">
                   <div className="form-group">
                     <label htmlFor="service">Select Service (optional)</label>
-                    <select 
-                      id="service" 
+                    <select
+                      id="service"
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
                     >
-                      <option value="Industrial Machinery">Industrial Machinery</option>
-                      <option value="Technology Equipment">Technology Equipment</option>
-                      <option value="Laboratory Equipment">Laboratory Equipment</option>
-                      <option value="Smart City & Smart Poles">Smart City & Smart Poles</option>
-                      <option value="Row Materials & Finished Products">Row Materials & Finished Products</option>
-                      <option value="Electrical Equipment's & Solar Energy">Electrical Equipment's & Solar Energy</option>
-                      <option value="Other (Specify on the Comments)">Other (Specify on the Comments)</option>
+                      <option value="Industrial Machinery">
+                        Industrial Machinery
+                      </option>
+                      <option value="Technology Equipment">
+                        Technology Equipment
+                      </option>
+                      <option value="Laboratory Equipment">
+                        Laboratory Equipment
+                      </option>
+                      <option value="Smart City & Smart Poles">
+                        Smart City & Smart Poles
+                      </option>
+                      <option value="Row Materials & Finished Products">
+                        Row Materials & Finished Products
+                      </option>
+                      <option value="Electrical Equipment's & Solar Energy">
+                        Electrical Equipment's & Solar Energy
+                      </option>
+                      <option value="Other (Specify on the Comments)">
+                        Other (Specify on the Comments)
+                      </option>
                     </select>
                   </div>
                 </div>
                 <div className="form-col">
                   <div className="form-group">
                     <label htmlFor="region">Select Region</label>
-                    <select 
-                      id="region" 
-                      name="region" 
+                    <select
+                      id="region"
+                      name="region"
                       value={formData.region}
                       onChange={handleChange}
                       required
@@ -195,7 +221,9 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn">Submit</button>
+              <button type="submit" className="btn">
+                Submit
+              </button>
             </form>
           </div>
         </div>
